@@ -14,46 +14,45 @@ const p2pTransactionValidation = (details: IP2PTransactionDetails) => {
     amount,
     currency,
     type,
-    gatewayTransactionId,
   } = details;
   const errors: Record<string, string> = {};
 
   if (!senderUserId || senderUserId.trim() === "") {
-    errors.senderUserID = "Sender user id is required";
+    errors.senderUserId = "Sender user id is required";
   } else {
     if (!isValidObjectId(senderUserId)) {
-      errors.senderUserID = "Sender user id should be a valid id";
+      errors.senderUserId = "Sender user id should be a valid id";
     }
   }
 
   if (!senderWalletId || senderWalletId.trim() === "") {
-    errors.senderWalletID = "Sender wallet id is required";
+    errors.senderWalletId = "Sender wallet id is required";
   } else {
     if (!isValidObjectId(senderWalletId)) {
-      errors.senderWalletID = "Sender wallet id should be a valid id";
+      errors.senderWalletId = "Sender wallet id should be a valid id";
     }
   }
 
   if (!receiverUserId || receiverUserId.trim() === "") {
-    errors.receiverUserID = "Receiver user id is required";
+    errors.receiverUserId = "Receiver user id is required";
   } else {
     if (!isValidObjectId(receiverUserId)) {
-      errors.receiverUserID = "Receiver user id should be a valid id";
+      errors.receiverUserId = "Receiver user id should be a valid id";
     }
   }
 
   if (!receiverWalletId || receiverWalletId.trim() === "") {
-    errors.receiverWalletID = "Receiver wallet id is required";
+    errors.receiverWalletId = "Receiver wallet id is required";
   } else {
     if (!isValidObjectId(receiverWalletId)) {
-      errors.receiverWalletID = "Receiver wallet id should be a valid id";
+      errors.receiverWalletId = "Receiver wallet id should be a valid id";
     }
   }
 
   if (!amount || !parseFloat(amount)) {
     errors.amount = "Amount is required";
   } else {
-    if (parseFloat(amount) < 0) {
+    if (parseFloat(amount) <= 0) {
       errors.amount = "Amount should be greater than 0";
     }
   }
@@ -70,9 +69,9 @@ const p2pTransactionValidation = (details: IP2PTransactionDetails) => {
     }
   }
 
-  if (!gatewayTransactionId || gatewayTransactionId.trim() === "") {
-    errors.gatewayTransactionId = "Gateway transaction id is required";
-  }
+  // if (!gatewayTransactionId || gatewayTransactionId.trim() === "") {
+  //   errors.gatewayTransactionId = "Gateway transaction id is required";
+  // }
 
   return {
     valid: Object.keys(errors).length < 1,

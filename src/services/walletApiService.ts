@@ -58,7 +58,7 @@ const creditWallet = async (walletId: string, amount: number) => {
 const getWalletByUserId = async (userId: string) => {
   try {
     const response = await fetch(
-      `${WALLET_SERVICE_BASE_URL}/api/wallets/${userId}`
+      `${WALLET_SERVICE_BASE_URL}/api/wallets/user/${userId}`
     );
     const jsonResponse = await response.json();
 

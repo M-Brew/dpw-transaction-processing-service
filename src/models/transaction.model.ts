@@ -10,6 +10,18 @@ const transactionSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
     },
+    senderWalletCode: {
+      type: String,
+    },
+    senderWalletUserName: {
+      type: String,
+    },
+    senderWalletUserImage: {
+      type: String,
+    },
+    senderWalletStatus: {
+      type: String,
+    },
     receiverUserId: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -17,6 +29,18 @@ const transactionSchema = new Schema(
     receiverWalletId: {
       type: Schema.Types.ObjectId,
       required: true,
+    },
+    receiverWalletCode: {
+      type: String,
+    },
+    receiverWalletUserName: {
+      type: String,
+    },
+    receiverWalletUserImage: {
+      type: String,
+    },
+    receiverWalletStatus: {
+      type: String,
     },
     amount: {
       type: Number,
@@ -38,7 +62,7 @@ const transactionSchema = new Schema(
     gatewayTransactionId: {
       type: String,
     },
-    description: {
+    note: {
       type: String,
     },
   },

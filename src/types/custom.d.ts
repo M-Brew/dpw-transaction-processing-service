@@ -6,7 +6,7 @@ export interface IP2PTransactionDetails {
   amount: string;
   currency?: string;
   type: string;
-  gatewayTransactionId: string;
+  gatewayTransactionId?: string; // if external gateway is involved
   description?: string;
 }
 
