@@ -17,6 +17,10 @@ const debitWallet = async (walletId: string, amount: number) => {
     );
     const jsonResponse = await response.json();
 
+    if (!response.ok) {
+      throw new Error(jsonResponse?.error || "Failed to debit wallet");
+    }
+
     console.log(`Successfully debited wallet ${walletId} by ${amount}`);
 
     return jsonResponse;
@@ -25,7 +29,7 @@ const debitWallet = async (walletId: string, amount: number) => {
       `Error debiting wallet ${walletId} by ${amount}: ${error.message}`,
       { error: error.response?.data || error.message }
     );
-    throw new Error(error.response?.data?.message || "Failed to debit wallet");
+    throw new Error(error.message || "Failed to debit wallet");
   }
 };
 

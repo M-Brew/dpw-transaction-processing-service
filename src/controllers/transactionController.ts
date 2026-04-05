@@ -130,8 +130,8 @@ const p2pTransfer = async (req: Request, res: Response) => {
     }
 
     res
-      .status(500)
-      .json({ message: "Transaction failed", details: error.message });
+      .status(400)
+      .json({ error: error.message });
   }
 }
 
@@ -224,7 +224,7 @@ const getUserTransactions = async (req: Request, res: Response) => {
     const transactions = await Transaction.find({
       $or: [
         { senderUserId: userId },
-        { receiverUserId: userId },
+        { receiverUserId: userId, status: "SUCCESS" },
       ]
     }).sort({ createdAt: -1 });
 
